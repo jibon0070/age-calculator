@@ -6,6 +6,7 @@ function App() {
     const ref = useRef<HTMLInputElement>(null);
     const [date, set_date] = useState<{ seconds: number, minutes: number, hours: number, days: number, months: number, years: number }>();
 
+    let interval: any;
     function calculate_age(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
@@ -39,17 +40,19 @@ function App() {
                 years--;
             }
             set_date({seconds, minutes, hours, days, months, years});
-        }
 
+        }
         if (ref.current) {
             const birthday = new Date(ref.current.value);
             if (isNaN(birthday.getTime())) return
             calculate(birthday);
-            setInterval(() => {
+            if (interval) clearInterval(interval);
+            interval = setInterval(() => {
                 calculate(birthday);
             }, 1000);
         }
     }
+
 
     function padding(number: number) {
         if (number < 10) return `0${number}`
