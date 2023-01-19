@@ -1,0 +1,96 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    input[type="datetime-local"] {
+      font-size: 1.2rem;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #3e8e41;
+      }
+    }
+  }
+
+  div {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+}
+
+.form-group {
+  animation: fadeIn 0.5s ease-in;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  label {
+    animation: slideIn 0.5s ease-in;
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  input[type="datetime-local"] {
+    animation: slideIn 0.5s ease-in 0.2s;
+  }
+
+  button {
+    animation: slideIn 0.5s ease-in 0.4s;
+  }
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#app {
+  display: flex;
+  align-items: center;  /* centers elements vertically */
+  justify-content: center; /* centers elements horizontally */
+  height: 100vh; /* make sure the parent container is as tall as the viewport */
+}
