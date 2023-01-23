@@ -7,6 +7,7 @@ function App() {
     const [date, set_date] = useState<{ seconds: number, minutes: number, hours: number, days: number, months: number, years: number }>();
 
     let interval: any;
+
     function calculate_age(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
@@ -42,6 +43,7 @@ function App() {
             set_date({seconds, minutes, hours, days, months, years});
 
         }
+
         if (ref.current) {
             const birthday = new Date(ref.current.value);
             if (isNaN(birthday.getTime())) return
@@ -60,13 +62,17 @@ function App() {
     }
 
     return <div id="app">
-        <h1>Age Calculator</h1>
-        {!date ? <form onSubmit={calculate_age} className="form-group">
-                <label htmlFor="in">Date</label>
-                <input type="datetime-local" ref={ref}/>
-                <button>Calculate</button>
-            </form> :
-            <div>{padding(date.years)}y {padding(date.months)}m {padding(date.days)}d {padding(date.hours)}h {padding(date.minutes)}m {padding(date.seconds)}s</div>}
+        {
+            !date ?
+                <form onSubmit={calculate_age} className="form-group">
+                    <h1>Age Calculator</h1>
+                    <label htmlFor="in">Date</label>
+                    <input type="datetime-local" ref={ref}/>
+                    <button>Calculate</button>
+                </form> :
+                <div id="age">
+                    {padding(date.years)}y {padding(date.months)}m {padding(date.days)}d {padding(date.hours)}h {padding(date.minutes)}m {padding(date.seconds)}s
+                </div>}
     </div>;
 }
 
